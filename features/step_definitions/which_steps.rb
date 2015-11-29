@@ -4,7 +4,6 @@ Given(/^I am on the Which television review page$/) do
 end
 
 And(/^I can see the '(All Televisions|Best Buys|Advice Guides)' tab$/) do |tabs|
-    # page.has_selector?(:xpath,'//html/body/header/nav[2]/ul/li[1]/a')
   page.has_content?(tabs)
 end
 
@@ -12,17 +11,17 @@ And(/^I can choose the screen size between '(.*)'$/) do |name|
   find(:xpath, "//label",:text => name).click
 end
 
-Given /^I wait for (\d+) seconds?$/ do |n|
+Given /^I wait for (\d+) seconds to see my choice?$/ do |n|
   sleep(n.to_i)
 end
 
 And(/^I clear all the screen size selection$/) do
-  page.has_content?('Clear all')
+  page.has_content? 'Clear all'
   click_link('Clear all')
 end
 
 And(/^I sort by '(.*)'$/) do |choice|
-  page.has_content?('Sort by')
+  page.has_content? 'Sort by'
   find(:xpath,'//html/body/div[4]/div[1]/div[2]/form/div/select').click
   case choice
     when 'Most-recently tested'
@@ -51,13 +50,13 @@ When(/^I click on '(Best Buys|Advice Guides)' tab$/) do |tab|
 end
 
 Then(/^The Best Buys page is loaded$/) do
-  expect(page).to have_content 'Which? Best Buy televisions'
-  expect(page).to have_content 'How we find the best TVs'
+  page.has_content? 'Which? Best Buy televisions'
+  page.has_content? 'How we find the best TVs'
 end
 
 Then(/^The Advice Guides page is loaded$/) do
-  expect(page).to have_content 'Televisions advice guides'
-  expect(page).to have_content 'What is 4K TV?'
+  page.has_content? 'Televisions advice guides'
+  page.has_content? 'What is 4K TV?'
 end
 
 And(/^I can filter by the screen size between (.*)$/) do |size|

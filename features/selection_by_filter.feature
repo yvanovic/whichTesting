@@ -1,13 +1,16 @@
 Feature: Find the best TV deals in UK
 
-  @selenium
+  In order to make a right decision before I buy a Television
+  As a customer
+  I want to filter the list of offered Televisions by price , size, features and types
+
   Scenario Outline: Filter by screen size
     Given I am on the Which television review page
     And   I can see the 'All Televisions' tab
     When  I can choose the screen size between '<screen_size>'
     Then  I see right selection by <size>
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
+    Then  I wait for 10 seconds to see my choice
     Examples:
       | screen_size |
       | 17-26"      |
@@ -22,7 +25,7 @@ Feature: Find the best TV deals in UK
     When  I filter by the <brand>
     Then  I see right selection by <brand>
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
+    Then  I wait for 10 seconds to see my choice
     Examples:
       | brand     |
       | Samsung   |
@@ -37,7 +40,7 @@ Feature: Find the best TV deals in UK
     When   I filter by the <type>
     Then  I see right selection by <type>
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
+    Then  I wait for 10 seconds to see my choice
     Examples:
       | type        |
       | Curved LCD  |
@@ -50,10 +53,10 @@ Feature: Find the best TV deals in UK
   Scenario Outline: Filter Features
     Given I am on the Which television review page
     And   I can see the 'All Televisions' tab
-    When   I filter by the <feature>
+    When  I filter by the <feature>
     Then  I see right selection by <Features>
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
+    Then  I wait for 10 seconds to see my choice
     Examples:
       | feature     |
       | Smart TV    |
@@ -68,7 +71,6 @@ Feature: Find the best TV deals in UK
     When   I filter by the <retailer>
     Then  I see right selection by <retailer>
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
     Examples:
       | retailer              |
       | Amazon.co.uk          |
@@ -82,8 +84,8 @@ Feature: Find the best TV deals in UK
     Given I am on the Which television review page
     And   I can see the 'All Televisions' tab
     When  I can filter by the <brand> and <size>
+    Then  I wait for 5 seconds to see my choice
     And   I clear all the screen size selection
-    Then  I wait for 10 seconds
     Examples:
       | brand     | size   |
       | Samsung   | 17-26" |

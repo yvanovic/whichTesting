@@ -1,6 +1,10 @@
 Feature: Find the best TV deals in UK
 
-  @selenium
+  In order to make a right decision before I buy a Television
+  As a customer
+  I want to compare a set of selected Televisions once filtered
+
+
   Scenario Outline: Filter by min and max price then compare
     Given I am on the Which television review page
     And   I can see the 'All Televisions' tab
@@ -10,13 +14,11 @@ Feature: Find the best TV deals in UK
     Then  the compare banner is shown below the page with the selected tv model
     When  I click compare under the second selection
     Then  the second selected tv model is added on compare banner
-    Then  I wait for 10 seconds
     Examples:
       | min_price | max_price |
       | 600       | 1000      |
       | 2000      | 3000      |
 
-  @selenium
   Scenario Outline: Filter by min and max price then compare
     Given I am on the Which television review page
     And   I can see the 'All Televisions' tab
@@ -33,7 +35,6 @@ Feature: Find the best TV deals in UK
     When  I click compare under the fifth selection
     Then  the fifth selected tv model is not added on compare banner
     And   I can see message 'You already have 4 products for comparison'
-    Then  I wait for 10 seconds
     Examples:
       | min_price | max_price |
       | 600       | 1000      |
@@ -51,7 +52,6 @@ Feature: Find the best TV deals in UK
     When  I click compare under the second selection
     Then  the second selected tv model is added on compare banner
     When  I click on remove from compare
-    Then  I wait for 10 seconds
     Examples:
       | min_price | max_price |
       | 600       | 1000      |
